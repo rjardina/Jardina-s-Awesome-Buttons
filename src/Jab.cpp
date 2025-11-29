@@ -1,7 +1,7 @@
 // Jab = Jardina's Awesome Buttons
 // Made by Ryan Jardina ~ KF5EKB
 // Released under the GNU GPL v2
-// Version: 1
+// Version: 2
 
 #include <Jab.h>
 
@@ -17,7 +17,7 @@ Jab::Jab(uint8_t InputType, uint8_t Button0, uint8_t Button1, uint8_t Button2, u
     if (InputType == INPUT || InputType == INPUT_PULLDOWN) { FlipByte = 1; } }  // Default is Pullup, cause that's what I use but if others is need than this help (i think)
 
 /// @brief Function to see if button(s) were being pressed
-uint8_t Jab::UserInput(void) {
+uint16_t Jab::UserInput(void) {
   if ((Buttons() || InputIndicator) && TimeSinceReleased < millis()) {          // Are the buttons being pressed or were they
     if (!InputIndicator) {                                                      // Were the button pressed in the recent pass
       TimeSincePressed = millis() + DebounceDelay;                              // Buttons weren't being pressed set current time plus an 8th of a second variable
@@ -25,6 +25,7 @@ uint8_t Jab::UserInput(void) {
     if (ButtonInputted < Buttons()) { ButtonInputted = Buttons(); }             // This is to allow botton combos + debounce 
     if (!Buttons() && TimeSincePressed < millis()) {                            // Buttons are now open again & at least an 8th of a second has passed since first pressed
       LastInput = ButtonInputted;                                               // Place buttons that were pressed into LastInput
+      if (millis() > TimeSincePressed + 950) { LastInput += 256; }              // If pressed longer than a seconds add 255 to press
       InputIndicator = 0;                                                       // Resets input indicator
       ButtonInputted = 0;                                                       // Reset input
       TimeSinceReleased = millis() + DebounceDelay;                             // This is to help with debounce
