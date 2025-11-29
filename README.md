@@ -11,15 +11,15 @@ at it was intended, as it's ment to be in running / cycling code.<p>
 
 Uses INPUT, INPUT_PULLUP and INPUT_PULLDOWN just like normal.<p>
 
-Jab ObjectName(INPUT_PULLUP, 2, 3, 4, 5);<p>
+<tt>Jab ObjectName(INPUT_PULLUP, 2, 3, 4, 5);</tt><p>
 
 First number declaired is the pin number used as the least significant bit &
 goes up from there. Can include upto 8 buttons to a combined output of 255.<br>
 
 Public:<p>
 
-ObjectName.UserInput() : Returns button(s) combined value<p>
+<tt>ObjectName.UserInput()</tt> : Returns button(s) combined value<p>
 
-ObjectName.LastInput : Returns last value seen<p>
+<tt>ObjectName.LastInput</tt> : Returns last value seen<p>
 
 Holding the button(s) down longer than a seond will add 256 / 0x100 to the return value
