@@ -1,7 +1,7 @@
 Jab = Jardina's Awesome Buttons<br>
 Made by: Ryan Jardina ~ KF5EKB<br>
 Released under the GNU GPL v2<br>
-Version: 1<p>
+Version: 2<p>
 
 This library can take a single or group of buttons & returns the combined
 value. It includes debouncing (default is 50ms), once the buttons are released
@@ -20,4 +20,6 @@ Public:<p>
 
 ObjectName.UserInput() : Returns button(s) combined value<p>
 
-ObjectName.LastInput : Returns last value seen
+ObjectName.LastInput : Returns last value seen<p>
+
+Holding the button(s) down longer than a seond will add 256 / 0x100 to the return value
